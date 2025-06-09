@@ -98,9 +98,9 @@ int main() {
 
 #### b) Inspect:
 
-* Are `char` parameters still passed in full 64-bit registers?
-* How is sign extension handled?
-* Where is the return value stored?
+* Are `char` parameters still passed in full 64-bit registers? They're also in the lower 32 Bit part of the 64 Bit Register z.b . %esi from %rsi
+* How is sign extension handled? The sign extension is handeld with the movsbl command, which stands for move with signextension (byte to long). This does extend the memory to 0s or 1s, dependent on the sign.
+* Where is the return value stored? As always in %eax wich is the regular register for return.
 
 ---
 
