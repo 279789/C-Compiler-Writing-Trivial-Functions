@@ -64,8 +64,8 @@ int main() {
 
 #### b) Reflect:
 
-* Which registers are used to pass `x`, `y`, and `z` into `compute_sum`?
-* Where does the return value appear after `compute_sum` finishes?
+* Which registers are used to pass `x`, `y`, and `z` into `compute_sum`? %edi, %esi, %edx
+* Where does the return value appear after `compute_sum` finishes? at %eax
 
 ---
 
