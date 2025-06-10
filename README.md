@@ -131,9 +131,9 @@ int main() {
 
 #### b) Inspect:
 
-* Which `%xmm` registers are used for `float` parameters?
-* Where is the floating-point result returned?
-* Can you observe floating-point multiplication instructions (`mulss`)?
+* Which `%xmm` registers are used for `float` parameters? %xmm0, %xmm1 and %xmm2
+* Where is the floating-point result returned? The result is returned in %xmm0
+* Can you observe floating-point multiplication instructions (`mulss`)? Yes I can see it.
 
 ---
 
