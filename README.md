@@ -167,19 +167,19 @@ int main() {
 
 #### b) Inspect:
 
-* How are mixed types split across general-purpose registers and floating-point registers?
-* Where do you observe implicit type conversions?
+* How are mixed types split across general-purpose registers and floating-point registers? Int and char variables are going int general purpuse registers, float is inside an xmm register
+* Where do you observe implicit type conversions? cvtss2sd -0x4(%rbp),%xmm1 This converts an int int float.  cvtss2sd -0x4(%rbp),%xmm1 converts a float into double
 
 ---
 
 ## Questions
 
-1. How many parameters are passed in registers on x86\_64?
-2. How are `char` parameters handled inside registers?
-3. Which registers are used for floating-point arguments?
-4. Where do integer and floating-point return values appear after function calls?
-5. Why do calling conventions exist?
-6. What happens when you call functions with more than 6 parameters?
+1. How many parameters are passed in registers on x86\_64? Each register fits 1 parameter, for example, %xmm0 fits 2.5.
+2. How are `char` parameters handled inside registers? A char parameter takes only 8 of 64 Bit / 32Bit from the register . The rest is singed, for example if an character is placed in %eax (lower 32 Bit of %rax) than it only takes 8 Bit, on the other 24 Bit could be any old data that we don't. To avoid misinterpretation, those other bits get signed, wich means, that all 24 bits are written 1s or 0s (depending on the sign.) 
+3. Which registers are used for floating-point arguments? %xmm registers are used.
+4. Where do integer and floating-point return values appear after function calls? Integer go ussually inside general purpuse registers. Floating-point values stay inside they're xmm registers
+5. Why do calling conventions exist? This is an very important function to save a lot of time. If you wouldn't have this opertunity, you would write every function for every use again. No librarie would work at all.
+6. What happens when you call functions with more than 6 parameters? If you call a function with more than 6 parameters, the rest of the parameters goes on the stack.
 7. Why is it important for compiler, assembler, and linker to agree on calling conventions?
 
 ## Advice
